@@ -5,6 +5,7 @@ export const Home = () => {
   return (
     <div style={{marginTop: "-20px"}}>
       <PostItem />
+      <PostItem />
     </div>
   )
 }

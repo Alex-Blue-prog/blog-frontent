@@ -35,10 +35,12 @@ div.post {
   
   div.post .texts .info .author {
     margin-right: 20px;
-    color: #333;
+    color: var(--mainColor);
+    
   }
   
   div.post p.summary {
     margin: 10px 0;
     line-height: 1.4rem;
+    color: #888;
   }

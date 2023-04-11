@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+:root {
+  --mainColor: purple;
+}
+
 body {
   color: #333;
   font-family: Arial, Helvetica, sans-serif;
@@ -30,7 +34,7 @@ header {
 
 header a {
   text-decoration: none;
-  color: inherit;
+  color: var(--mainColor);
 }
 
 header a.logo {
