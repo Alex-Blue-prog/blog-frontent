@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
 import { api } from '../../api';
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,6 +14,7 @@ export const Register = () => {
     try {
       const response = await api.register({username, password});
       console.log(response);
+      navigate(`/login`);
     } catch(err) {
       alert("Registration failed.");
     }
