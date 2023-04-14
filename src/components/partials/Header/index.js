@@ -27,7 +27,7 @@ export const Header = () => {
         <nav>
           {state.user.username && (
             <>
-            <Link to={"create"}>Create new post</Link>
+            <Link to={"/create"}>Create new post</Link>
             <span onClick={logout}>Logout</span>
             </>
           )}

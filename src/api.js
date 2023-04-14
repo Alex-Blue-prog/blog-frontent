@@ -20,5 +20,9 @@ export const api = {
     logout: async () => {
         let res = await http.post("/logout", {}, {withCredentials: true});
         return res.data;
+    },
+    createPost: async (postObj) => {
+        let res = await http.post("/post", postObj);
+        return res.data;
     }
 }
