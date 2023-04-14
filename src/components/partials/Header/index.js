@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {Link} from "react-router-dom";
+import { api } from '../../../api';
+import { Context } from '../../../contexts/UserContext';
 
 export const Header = () => {
+  const {state, dispatch} = useContext(Context);
+
+  useEffect(() => {
+    const profile = async () => {
+      const res = await api.profile();
+      if(res === "no token") return;
+      dispatch( { type: "LOGIN", payload: res } );
+    }
+
+    profile();
+  },[dispatch]);
+
+  const logout = async () => {
+    await api.logout();
+    dispatch( { type: "LOGOUT", payload: {} } );
+  }
+
   return (
     <header>
         <Link to={"/"} className="logo">MyBlog</Link>
         <nav>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          {state.user.username && (
+            <>
+            <Link to={"create"}>Create new post</Link>
+            <span onClick={logout}>Logout</span>
+            </>
+          )}
+          {!state.user.username && (
+            <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+            </>
+          )}
+        
         </nav>
     </header>
   )

@@ -15,6 +15,7 @@ export const Register = () => {
       const response = await api.register({username, password});
       console.log(response);
       navigate(`/login`);
+      
     } catch(err) {
       alert("Registration failed.");
     }

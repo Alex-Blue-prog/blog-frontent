@@ -32,9 +32,10 @@ header {
   /* margin-bottom: 30px; */
 }
 
-header a {
+header a, span {
   text-decoration: none;
   color: var(--mainColor);
+  cursor: pointer;
 }
 
 header a.logo {
