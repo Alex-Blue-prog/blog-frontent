@@ -23,6 +23,6 @@ export const api = {
     },
     createPost: async (postObj) => {
         let res = await http.post("/post", postObj);
-        return res.data;
+        return res;
     }
 }

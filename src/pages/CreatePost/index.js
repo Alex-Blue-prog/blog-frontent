@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { api } from '../../api';
@@ -28,6 +29,7 @@ export const CreatePost = () => {
     const [summary, setSummary] = useState("");
     const [content, setContent] = useState("");
     const Imgfiles = useRef();
+    const navigate = useNavigate();
 
     const createNewPost = async (e) => {
         e.preventDefault();
@@ -38,9 +40,13 @@ export const CreatePost = () => {
         data.set("content", content);
         data.set("file", Imgfiles.current.files[0]);
         
-        await api.createPost(data);
+        const res = await api.createPost(data);
+        
+        if(res.statusText === "OK") {
+            navigate("/");
+            // navigate("/post/" + res.data._id);
+        }
     }
-
 
     return (
         <form onSubmit={createNewPost} className={styles.postForm}>
