@@ -22,7 +22,19 @@ export const api = {
         return res.data;
     },
     createPost: async (postObj) => {
-        let res = await http.post("/post", postObj);
+        let res = await http.post("/post", postObj, {withCredentials: true});
+        return res;
+    },
+    getPosts: async () => {
+        let res = await http.get("/post");
+        return res.data;
+    },
+    getPost: async (postId) => {
+        let res = await http.get(`/post/${postId}`);
+        return res.data;
+    },
+    updatePost: async (postObj, postId) => {
+        let res = await http.put(`/post/${postId}`, postObj, {withCredentials: true});
         return res;
     }
 }

@@ -1,0 +1,73 @@
+div.postPage h1 {
+    margin: 0px 0 10px 0;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+div.postPage time {
+    text-align: center;
+    display: block;
+    font-size: .7rem;
+    color: #888;
+}
+
+div.postPage .author {
+    text-align: center;
+    color: var(--mainColor);
+    margin: 5px 0 10px 0;
+    font-size: .7rem;
+    font-weight: bold;
+}
+
+div.postPage div.editRow {
+    text-align: center;
+}
+
+div.postPage div.editRow a.editBtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    margin: 0px auto 15px auto;
+    background-color: var(--mainColor);
+    color: #fff;
+    border: 2px solid var(--mainColor);
+    padding: 9px 15px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 19px;
+    font-weight: bold;
+}
+
+a svg {
+    height: 18px;
+}
+
+div.postPage div.editRow a.editBtn:hover {
+    background-color: #fff;
+    color: var(--mainColor);
+}
+
+div.postPage .image {
+    /* max-height: 200px; */
+    height: 200px;
+    overflow: hidden;
+}
+
+div.postPage div.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* content styles */
+div.postPage .content a {
+    color: var(--mainColor);
+}
+
+div.postPage .content p {
+    margin: 15px 0;
+    line-height: 1.5rem;
+    color: #333;
+}

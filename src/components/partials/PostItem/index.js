@@ -1,20 +1,28 @@
 import React from 'react';
 import styles from "./styles.module.css";
 import {Link} from "react-router-dom";
+import {formatISO9075} from "date-fns";
 
-export const PostItem = () => {
+export const PostItem = ({data}) => {
+  
   return (
     <div className={styles.post}>
         <div className={styles.image}>
-          <img src="https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg" alt="" />
+          <Link to={`/post/${data._id}`}>
+          <img src={`http://localhost:5000/${data.cover}`} alt="post" />
+          </Link>
         </div>
+
         <div className={styles.texts}>
-          <h2>Full-house battery backup coming later this year</h2>
+          <Link to={`/post/${data._id}`}>
+          <h2>{data.title}</h2>
+          </Link>
+
           <p className={styles.info}>
-            <Link className={styles.author} to="/test">Dawid Paszko</Link>
-            <time>2023-01-06 16:45</time>
+            <Link className={styles.author} to={`/user/${data.author._id}`}>@{data.author.username}</Link>
+            <time>{formatISO9075( new Date(data.createdAt) )}</time>
           </p>
-          <p className={styles.summary}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima doloribus libero perspiciatis animi dolor quasi.</p>
+          <p className={styles.summary}>{data.summary}</p>
         </div>
     </div>
   )
