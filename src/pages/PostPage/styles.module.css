@@ -19,8 +19,15 @@ div.postPage .author {
     font-weight: bold;
 }
 
-div.postPage div.editRow {
+/* div.postPage div.editRow {
     text-align: center;
+} */
+
+div.postPage .btnsContainer {
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 div.postPage div.editRow a.editBtn {
@@ -50,14 +57,29 @@ div.postPage div.editRow a.editBtn:hover {
 
 div.postPage .image {
     /* max-height: 200px; */
-    height: 200px;
+    height: 300px;
     overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+div.postPage .image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    /* background: rgba(0, 0, 0, 0.2); */
+    box-shadow: inset 0px 5px 5px white;
 }
 
 div.postPage div.image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 
@@ -67,7 +89,7 @@ div.postPage .content a {
 }
 
 div.postPage .content p {
-    margin: 15px 0;
+    margin: 0px 0;
     line-height: 1.5rem;
     color: #333;
 }

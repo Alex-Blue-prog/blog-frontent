@@ -19,7 +19,7 @@ export const PostItem = ({data}) => {
           </Link>
 
           <p className={styles.info}>
-            <Link className={styles.author} to={`/user/${data.author._id}`}>@{data.author.username}</Link>
+            <span className={styles.author}>@{data.author.username}</span>
             <time>{formatISO9075( new Date(data.createdAt) )}</time>
           </p>
           <p className={styles.summary}>{data.summary}</p>

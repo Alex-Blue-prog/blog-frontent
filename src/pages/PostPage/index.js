@@ -45,7 +45,7 @@ export const PostPage = () => {
                 </svg>
                 Edit post
             </Link>
-        </div>
+        </div>  
         }
 
         <div className={styles.image}>

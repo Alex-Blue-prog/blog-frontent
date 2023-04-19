@@ -51,7 +51,7 @@ div.post .texts .info {
 div.post .texts .info .author {
   margin-right: 20px;
   color: var(--mainColor);
-    
+  cursor: default;
 }
   
 div.post p.summary {

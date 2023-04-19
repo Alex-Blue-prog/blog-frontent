@@ -36,5 +36,9 @@ export const api = {
     updatePost: async (postObj, postId) => {
         let res = await http.put(`/post/${postId}`, postObj, {withCredentials: true});
         return res;
+    },
+    deletePost: async (postId) => {
+        let res = await http.delete(`/post/${postId}`, {withCredentials: true});
+        return res.data;
     }
 }

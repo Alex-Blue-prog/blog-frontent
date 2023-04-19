@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from '../../api';
 import { Editor } from '../../components/partials/Editor';
+import { Loading } from '../../components/partials/Loading';
 
 
 export const CreatePost = () => {
@@ -13,10 +14,12 @@ export const CreatePost = () => {
     const Imgfiles = useRef();
     const navigate = useNavigate();
     const {id} = useParams();
+    const [loading, setLoading] = useState(false);
     // const [cover, setCover] = useState("");
 
     const createNewPost = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const data = new FormData();
         data.set("title", title);
@@ -34,9 +37,25 @@ export const CreatePost = () => {
         if(res.statusText === "OK") {
             // navigate("/post/" + id); 
             navigate("/post/" + res.data._id); 
-            // navigate("/");
         }
+
+        setLoading(false);
     }
+
+    const deletePost = async () => {
+        setLoading(true);
+        
+        try{
+            await api.deletePost(id);
+            navigate("/");
+
+        } catch(err) {
+            console.log(err);
+        }
+
+        setLoading(false);
+    } 
+    
 
     useEffect(() => {
         if(id) {
@@ -53,12 +72,16 @@ export const CreatePost = () => {
 
 
     return (
+        <>
+        {loading && <Loading />}
         <form onSubmit={createNewPost} className={styles.postForm}>
-            <input type="title" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
-            <input type="summary" placeholder='Summary' value={summary} onChange={e => setSummary(e.target.value)} />
-            <input type="file" accept='image/*' ref={Imgfiles} multiple={false} />
+            <input type="title" disabled={loading} placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
+            <input type="summary" disabled={loading} placeholder='Summary' value={summary} onChange={e => setSummary(e.target.value)} />
+            <input type="file" disabled={loading} accept='image/*' ref={Imgfiles} multiple={false} />
             <Editor content={content} setContent={setContent} />
-            <button>{id ? "Update post" : "Create post"}</button>
+            <button className={styles.btn} disabled={loading}>{id ? "Update post" : "Create post"}</button>
         </form>
+        <button onClick={deletePost} className={styles.btn} style={{marginTop: "5px", background: "red"}} disabled={loading}>Delete Post</button>
+        </>
     )
 }
