@@ -25,8 +25,8 @@ export const api = {
         let res = await http.post("/post", postObj, {withCredentials: true});
         return res;
     },
-    getPosts: async () => {
-        let res = await http.get("/post");
+    getPosts: async (limit) => {
+        let res = await http.get(`/post?limit=${limit}`);
         return res.data;
     },
     getPost: async (postId) => {

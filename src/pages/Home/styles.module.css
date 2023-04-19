@@ -1,0 +1,19 @@
+.showmore {
+    display: flex;
+    gap: 10px;
+    color: var(--mainColor);
+    cursor: pointer;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.showmore svg {
+    height: 17px;
+}
+
+.loading {
+    color: var(--mainColor);
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-weight: bold;
+}

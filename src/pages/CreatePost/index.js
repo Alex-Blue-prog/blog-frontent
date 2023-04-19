@@ -58,22 +58,29 @@ export const CreatePost = () => {
     
 
     useEffect(() => {
+        setTitle("");
+        setContent("");
+        setSummary("");
+
         if(id) {
             const getPost = async () => {
+                setLoading(true)
                 const res = await api.getPost(id);
                 setTitle(res.title);
                 setContent(res.content);
                 setSummary(res.summary);
+                setLoading(false);
             }
     
             getPost(); 
-        }
+        } 
     },[id]);
 
 
     return (
         <>
         {loading && <Loading />}
+    
         <form onSubmit={createNewPost} className={styles.postForm}>
             <input type="title" disabled={loading} placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
             <input type="summary" disabled={loading} placeholder='Summary' value={summary} onChange={e => setSummary(e.target.value)} />

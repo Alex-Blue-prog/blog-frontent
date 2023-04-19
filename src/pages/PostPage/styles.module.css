@@ -93,3 +93,9 @@ div.postPage .content p {
     line-height: 1.5rem;
     color: #333;
 }
+
+div.postPage .content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}

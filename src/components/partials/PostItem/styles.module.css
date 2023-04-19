@@ -5,6 +5,7 @@ div.post {
   /* margin-bottom: 30px; */
   border-bottom: 1px solid #9999995e;
   padding: 20px 0;
+ 
 }
 
 @media (min-width: 600px) {
