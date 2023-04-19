@@ -81,7 +81,7 @@ export const CreatePost = () => {
             <Editor content={content} setContent={setContent} />
             <button className={styles.btn} disabled={loading}>{id ? "Update post" : "Create post"}</button>
         </form>
-        <button onClick={deletePost} className={styles.btn} style={{marginTop: "5px", background: "red"}} disabled={loading}>Delete Post</button>
+        {id && <button onClick={deletePost} className={styles.btn} style={{marginTop: "5px", background: "red"}} disabled={loading}>Delete Post</button>}
         </>
     )
 }
