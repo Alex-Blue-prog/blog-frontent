@@ -1,3 +1,9 @@
+div.erroMsg {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
 form.login {
     max-width: 400px;
     margin: 0 auto;

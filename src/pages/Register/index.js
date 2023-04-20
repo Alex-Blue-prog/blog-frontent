@@ -7,9 +7,11 @@ export const Register = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const register = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
 
     try {
       const response = await api.register({username, password});
@@ -17,7 +19,7 @@ export const Register = () => {
       navigate(`/login`);
       
     } catch(err) {
-      alert("Registration failed.");
+      setErrorMsg(err.response.data);
     }
 
   }
@@ -25,6 +27,7 @@ export const Register = () => {
   return (
     <form className={styles.register} onSubmit={register}>
       <h1>Register</h1>
+      <div className={styles.erroMsg}>{errorMsg}</div>
       <input type="text" placeholder='username' value={username} onChange={e => setUsername(e.target.value)}  />
       <input type="password" placeholder='password' value={password} onChange={e => setPassword(e.target.value)} />
       <button>Register</button>

@@ -8,6 +8,7 @@ import { Context } from '../../contexts/UserContext';
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const {dispatch} = useContext(Context);
@@ -22,12 +23,10 @@ export const Login = () => {
         dispatch({type: "LOGIN", payload: response});
         navigate("/");
         
-      } else {
-        alert("wrong credentials");
-      }
+      } 
 
     } catch(err) {
-      alert("Login failed.");
+      setErrorMsg(err.response.data);
     }
 
   }
@@ -36,6 +35,7 @@ export const Login = () => {
     
     <form className={styles.login} onSubmit={login}>
       <h1>Login</h1>
+      <div className={styles.erroMsg}>{errorMsg}</div>
       <input type="text" placeholder='username' value={username} onChange={e => setUsername(e.target.value)} />
       <input type="password" placeholder='password' value={password} onChange={e => setPassword(e.target.value)} />
       <button>Enter</button>
