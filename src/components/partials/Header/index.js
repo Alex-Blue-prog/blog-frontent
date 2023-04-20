@@ -9,7 +9,7 @@ export const Header = () => {
   useEffect(() => {
     const profile = async () => {
       const res = await api.profile();
-      if(res === "no token") return;
+      if(res === "You are not authenticated" || res == "Token is not valid") return;
       dispatch( { type: "LOGIN", payload: res } );
     }
 
