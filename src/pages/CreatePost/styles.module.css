@@ -1,3 +1,9 @@
+div.erroMsg {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
 form.postForm input {
     display: block;
     margin-bottom: 10px;

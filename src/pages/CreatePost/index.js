@@ -15,11 +15,13 @@ export const CreatePost = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [loading, setLoading] = useState(false);
+    const [erroMsg, setErrorMsg] = useState("");
     // const [cover, setCover] = useState("");
 
     const createNewPost = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setErrorMsg("");
 
         const data = new FormData();
         data.set("title", title);
@@ -28,18 +30,25 @@ export const CreatePost = () => {
         data.set("file", Imgfiles.current.files[0] || "");
         
         let res;
-        if(!id) {
-            res = await api.createPost(data);
-        } else {
-            res = await api.updatePost(data, id);
+        try {
+            if(!id) {
+                res = await api.createPost(data);
+      
+            } else {
+                res = await api.updatePost(data, id);
+            }
+
+            if(res.statusText === "OK") {
+                // navigate("/post/" + id); 
+                navigate("/post/" + res.data._id); 
+            } 
+
+        } catch(err) {
+            setErrorMsg(err.response.data);
+        } finally {
+            setLoading(false);
         }
         
-        if(res.statusText === "OK") {
-            // navigate("/post/" + id); 
-            navigate("/post/" + res.data._id); 
-        }
-
-        setLoading(false);
     }
 
     const deletePost = async () => {
@@ -51,9 +60,9 @@ export const CreatePost = () => {
 
         } catch(err) {
             console.log(err);
+        } finally {
+            setLoading(false);
         }
-
-        setLoading(false);
     } 
     
 
@@ -80,7 +89,7 @@ export const CreatePost = () => {
     return (
         <>
         {loading && <Loading />}
-    
+        <div className={styles.erroMsg}>{erroMsg}</div>
         <form onSubmit={createNewPost} className={styles.postForm}>
             <input type="title" disabled={loading} placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
             <input type="summary" disabled={loading} placeholder='Summary' value={summary} onChange={e => setSummary(e.target.value)} />
