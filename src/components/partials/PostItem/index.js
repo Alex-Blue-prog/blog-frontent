@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./styles.module.css";
 import {Link} from "react-router-dom";
 import {formatISO9075} from "date-fns";
+import { Image } from '../Image';
 
 export const PostItem = ({data}) => {
   
@@ -9,7 +10,7 @@ export const PostItem = ({data}) => {
     <div className={styles.post}>
         <div className={styles.image}>
           <Link to={`/post/${data._id}`}>
-          <img src={`${process.env.REACT_APP_API}/${data.cover}`} alt="post" />
+          <Image src={data.cover} alt="post" />
           </Link>
         </div>
 

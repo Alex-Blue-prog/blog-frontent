@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import { api } from '../../api';
 import {formatISO9075} from "date-fns";
 import {Context} from "../../contexts/UserContext";
+import { Image } from '../../components/partials/Image';
 
 export const PostPage = () => {
     const params = useParams();
@@ -49,7 +50,7 @@ export const PostPage = () => {
         }
 
         <div className={styles.image}>
-            <img src={`${process.env.REACT_APP_API}/${postInfo.cover}`} alt="" />
+            <Image src={postInfo.cover} alt="" />
         </div>
         <div className={styles.content} dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>
