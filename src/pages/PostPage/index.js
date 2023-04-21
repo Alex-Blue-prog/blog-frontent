@@ -49,7 +49,7 @@ export const PostPage = () => {
         }
 
         <div className={styles.image}>
-            <img src={`http://localhost:5000/${postInfo.cover}`} alt="" />
+            <img src={`${process.env.REACT_APP_API}/${postInfo.cover}`} alt="" />
         </div>
         <div className={styles.content} dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>

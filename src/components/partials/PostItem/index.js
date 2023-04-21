@@ -9,7 +9,7 @@ export const PostItem = ({data}) => {
     <div className={styles.post}>
         <div className={styles.image}>
           <Link to={`/post/${data._id}`}>
-          <img src={`http://localhost:5000/${data.cover}`} alt="post" />
+          <img src={`${process.env.REACT_APP_API}/${data.cover}`} alt="post" />
           </Link>
         </div>
 
