@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 
 const isLogged = () => {
     const token = Cookies.get("token");
+    console.log(token);
     return token ? true : false;
 }
 
