@@ -18,7 +18,7 @@ export const MainRoutes = () => {
         <Route path='/register' element={<Register />} />
         <Route path='/create' element={<RequireAuth><CreatePost /></RequireAuth>} />
         <Route path='/create/:id' element={<RequireAuth><CreatePost /></RequireAuth>} />
-        <Route path='/post/:id' element={<RequireAuth><PostPage /></RequireAuth>} />
+        <Route path='/post/:id' element={<PostPage />} />
         <Route path='*' element={<div>Not Found 404</div>} />
       </Route>
     </Routes>
