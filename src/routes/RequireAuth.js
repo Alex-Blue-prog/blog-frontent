@@ -14,9 +14,14 @@ export const RequireAuth = ({children, ...rest}) => {
   const {state} = useContext(Context);
 
 
-    if(state.user.id) {
-        return children;
-    } else {
-        <Navigate to={"/login"} />
-    }
+  return (
+    <>
+        {state.user.id ? 
+            children
+        :
+            <Navigate to={"/login"} />
+        }
+    </>
+  )
+   
 }
