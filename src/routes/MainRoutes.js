@@ -6,7 +6,7 @@ import {Login} from "../pages/Login";
 import {Register} from "../pages/Register";
 import { CreatePost } from '../pages/CreatePost';
 import { PostPage } from '../pages/PostPage';
-import { RequireAuth } from './RequireAuth';
+// import { RequireAuth } from './RequireAuth';
 
 import { Navigate } from 'react-router-dom';
 import Cookies from "js-cookie";
