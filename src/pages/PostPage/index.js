@@ -17,6 +17,7 @@ export const PostPage = () => {
         const getPost = async () => {
             try {
                 const res = await api.getPost(id);
+                console.log("res:", res);
                 setPostInfo(res);
 
             } catch(err) {
@@ -31,6 +32,7 @@ export const PostPage = () => {
     const checkPostAuthor = postInfo?.author._id === state.user.id;
 
     // if(!postInfo) return "";
+    console.log(postInfo);
 
   return (
     <>
