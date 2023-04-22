@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {Layout} from "../Layout";
 import {Home} from "../pages/Home";
@@ -11,14 +11,18 @@ import { PostPage } from '../pages/PostPage';
 import { Navigate } from 'react-router-dom';
 import Cookies from "js-cookie";
 
-const isLogged = () => {
+
+
+
+export const MainRoutes = () => {
+
+  const isLogged = () => {
     const token = Cookies.get("token");
     console.log(token);
     return token ? true : false;
 }
 
 
-export const MainRoutes = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
