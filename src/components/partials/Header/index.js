@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { api } from '../../../api';
 import { Context } from '../../../contexts/UserContext';
 
 export const Header = () => {
   const {state, dispatch} = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const profile = async () => {
@@ -19,6 +20,7 @@ export const Header = () => {
   const logout = async () => {
     await api.logout();
     dispatch( { type: "LOGOUT", payload: {} } );
+    navigate("/");
   }
 
   return (
