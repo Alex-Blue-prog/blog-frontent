@@ -21,11 +21,9 @@ export const Login = () => {
 
       if(response.id !== undefined) {
         const {token} = response;
-        console.log(token);
-        dispatch({type: "LOGIN", payload: response});
         localStorage.setItem("token", token);
+        dispatch({type: "LOGIN", payload: response});
         navigate("/");
-        
       } 
 
     } catch(err) {
