@@ -10,21 +10,22 @@ export const api = {
         return res.data;
     },
     login: async (user) => {
-        let res = await http.post("/login", user, {withCredentials: true});
+        // let res = await http.post("/login", user, {withCredentials: true});
+        let res = await http.post("/login", user);
         return res.data;
     },
     profile: async () => {
         // let res = await http.get("/profile", {withCredentials: true});
-        console.log(localStorage.getItem("token"));
         let res = await http.get("/profile", {headers: { "Authorization" : `token ${localStorage.getItem("token")}` }});
         return res.data;
     },
     logout: async () => {
-        let res = await http.post("/logout", {}, {withCredentials: true});
-        return res.data;
+        // let res = await http.post("/logout", {}, {withCredentials: true});
+        // return res.data;
+        localStorage.removeItem("token");
     },
     createPost: async (postObj) => {
-        let res = await http.post("/post", postObj, {withCredentials: true});
+        let res = await http.post("/post", postObj, {headers: {"Authorization": `token ${localStorage.getItem("token")} `}});
         return res;
     },
     getPosts: async (limit) => {
@@ -36,11 +37,11 @@ export const api = {
         return res.data;
     },
     updatePost: async (postObj, postId) => {
-        let res = await http.put(`/post/${postId}`, postObj, {withCredentials: true});
+        let res = await http.put(`/post/${postId}`, postObj, {headers: {"Authorization": `token ${localStorage.getItem("token")} `}});
         return res;
     },
     deletePost: async (postId) => {
-        let res = await http.delete(`/post/${postId}`, {withCredentials: true});
+        let res = await http.delete(`/post/${postId}`, {headers: {"Authorization": `token ${localStorage.getItem("token")} `}});
         return res.data;
     }
 }
