@@ -36,6 +36,7 @@ export const CreatePost = () => {
       
             } else {
                 res = await api.updatePost(data, id);
+                console.log(res);
             }
 
             if(res.statusText === "OK") {
