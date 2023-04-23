@@ -20,7 +20,10 @@ export const Login = () => {
       const response = await api.login({username, password});
 
       if(response.id !== undefined) {
+        const {token} = response;
+        console.log(token);
         dispatch({type: "LOGIN", payload: response});
+        localStorage.setItem("token", token);
         navigate("/");
         
       } 

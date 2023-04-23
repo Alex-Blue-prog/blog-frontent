@@ -14,7 +14,9 @@ export const api = {
         return res.data;
     },
     profile: async () => {
-        let res = await http.get("/profile", {withCredentials: true});
+        // let res = await http.get("/profile", {withCredentials: true});
+        console.log(localStorage.getItem("token"));
+        let res = await http.get("/profile", {headers: { "Authorization" : `token ${localStorage.getItem("token")}` }});
         return res.data;
     },
     logout: async () => {
