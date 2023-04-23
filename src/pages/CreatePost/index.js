@@ -39,7 +39,7 @@ export const CreatePost = () => {
                 console.log(res);
             }
 
-            if(res.statusText === "OK") {
+            if(res.status === 200) {
                 // navigate("/post/" + id); 
                 navigate("/post/" + res.data._id); 
             } 
